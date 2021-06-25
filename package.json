@@ -1,0 +1,23 @@
+{
+  "name": "vui",
+  "version": "0.0.1",
+  "description": "UI 框架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiayouzhao/vui.git"
+  },
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "author": "jiayouzhao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jiayouzhao/vui/issues"
+  },
+  "homepage": "https://github.com/jiayouzhao/vui#readme"
+}
