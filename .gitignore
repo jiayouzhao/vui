@@ -1,4 +1,5 @@
 node_modules
 .parcel-cache
 dist
+大纲.md
 .cache
