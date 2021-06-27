@@ -1,26 +1,39 @@
 {
-  "name": "vui",
-  "version": "0.0.1",
-  "description": "UI 框架",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jiayouzhao/vui.git"
-  },
-  "keywords": [
-    "vue",
-    "ui"
-  ],
-  "author": "jiayouzhao",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jiayouzhao/vui/issues"
-  },
-  "homepage": "https://github.com/jiayouzhao/vui#readme",
-  "dependencies": {
-    "vue": "^2.6.14"
-  }
+    "name": "vui",
+    "version": "0.0.1",
+    "description": "UI 框架",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "parcel index.html --no-cache"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jiayouzhao/vui.git"
+    },
+    "keywords": [
+        "vue",
+        "ui"
+    ],
+    "author": "jiayouzhao",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jiayouzhao/vui/issues"
+    },
+    "homepage": "https://github.com/jiayouzhao/vui#readme",
+    "dependencies": {
+        "vue": "^2.5.17",
+        "vue-hot-reload-api": "^2.3.4"
+    },
+    "devDependencies": {
+        "@parcel/transformer-vue": "^2.0.0-beta.2",
+        "@vue/component-compiler-utils": "^3.2.2",
+        "dart-sass": "^1.25.0",
+        "parcel-bundler": "^1.9.2",
+        "sass": "^1.35.1",
+        "vue-template-compiler": "^2.6.14"
+    },
+    "alias": {
+        "vue": "./node_modules/vue/dist/vue.common.js"
+    }
 }
