@@ -11,7 +11,7 @@
 export default {
 	props:[ "name" ],
 	created() {
-		console.log(this.name);
+		
 	}
 };
 </script>
