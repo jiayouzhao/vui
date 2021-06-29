@@ -46,6 +46,7 @@ $border-radius:4px;
 $red:#F35B54;
 $font-size:14px;
 $line-height:24px;
+
 .inputWrapper{  
     display:inline-block;
     font-size:$font-size;

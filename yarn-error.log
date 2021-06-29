@@ -1,0 +1,76 @@
+Arguments: 
+  E:\nodejs\node.exe E:\nodejs\node_modules\yarn\bin\yarn.js add mocha --dev
+
+PATH: 
+  D:\gitbash\Git\mingw64\bin;D:\gitbash\Git\usr\bin;C:\Users\Administrator\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\WINDOWS\system32\wbem;C:\Program Files (x86)\Windows Live\Shared;E:\software\vscode\Microsoft VS Code\bin;C:\Program Files (x86)\Calibre2;D:\QuickTime\QTSystem;D:\gitbash\Git\cmd;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;E:\nvm;E:\nodejs;C:\WINDOWS\system32;C:\WINDOWS;E:\nvm;E:\nodejs;E:\mongodb\bin;%GIT_HOME%\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;E:\software\WebStorm 2021\WebStorm 2021.1.1\bin;E:\software\vscode\Microsoft VS Code\bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.16.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Administrator\Desktop\vui\node_modules\deasync\bin\win32-x64-node-14\deasync.node'
+
+npm manifest: 
+  {
+      "name": "vui",
+      "version": "0.0.1",
+      "description": "UI 框架",
+      "main": "index.js",
+      "scripts": {
+          "test": "parcel build test/* --no-minify && npx karma start --single-run",
+          "start": "parcel index.html --no-cache",
+          "dev-test": "parcel watch test/* --no-cache & npx karma start"
+      },
+      "repository": {
+          "type": "git",
+          "url": "git+https://github.com/jiayouzhao/vui.git"
+      },
+      "keywords": [
+          "vue",
+          "ui"
+      ],
+      "author": "jiayouzhao",
+      "license": "MIT",
+      "bugs": {
+          "url": "https://github.com/jiayouzhao/vui/issues"
+      },
+      "homepage": "https://github.com/jiayouzhao/vui#readme",
+      "dependencies": {
+          "vue": "^2.5.17",
+          "vue-hot-reload-api": "^2.3.4"
+      },
+      "devDependencies": {
+          "@parcel/transformer-vue": "^2.0.0-beta.2",
+          "@vue/component-compiler-utils": "^3.2.2",
+          "node-sass": "npm:dart-sass@^1.25.0",
+          "parcel-bundler": "^1.9.2",
+          "sass": "^1.35.1",
+          "vue-template-compiler": "^2.6.14",
+          "chai": "^4.1.2",
+          "chai-spies": "^1.0.0",
+          "karma": "^2.0.4",
+          "karma-chai": "^0.1.0",
+          "karma-chai-spies": "^0.1.4",
+          "karma-chrome-launcher": "^2.2.0",
+          "karma-mocha": "^1.3.0",
+          "karma-sinon-chai": "^1.3.4",
+          "mocha": "^5.2.0",
+          "sinon": "^6.0.1",
+          "sinon-chai": "^3.2.0"
+      },
+      "alias": {
+          "vue": "./node_modules/vue/dist/vue.common.js"
+      }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
