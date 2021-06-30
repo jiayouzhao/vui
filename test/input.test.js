@@ -14,7 +14,7 @@ describe("Input", () => {
 		const Constructor = Vue.extend(Input);
 		const vm = new Constructor({
 			propsData: {
-				value: "7758"
+				value: "1235"
 			}
 		}).$mount();
 		const inputElement = vm.$el.querySelector("input");
