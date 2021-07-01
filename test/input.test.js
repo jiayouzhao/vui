@@ -10,31 +10,121 @@ describe("Input", () => {
 		// eslint-disable-next-line no-unused-expressions
 		expect(Input).to.be.ok;
 	});
-	it("接收 value", () => {
+
+	describe("props", () => {
+		
 		const Constructor = Vue.extend(Input);
-		const vm = new Constructor({
-			propsData: {
-				value: "1235"
-			}
-		}).$mount();
-		const inputElement = vm.$el.querySelector("input");
-		expect(inputElement.value).to.equal("1235");
-		vm.$destroy();
+		let vm;
+		afterEach(() => {
+			vm.$destroy();
+		});
+		it("接收 value", () => {
+			
+			vm = new Constructor({
+				propsData: {
+					value: "1235"
+				}
+			}).$mount();
+			const inputElement = vm.$el.querySelector("input");
+			expect(inputElement.value).to.equal("1235");
+			
+		});
+		it("接收 disabled", () => {
+			vm = new Constructor({
+				propsData: {
+					disabled:true
+				}
+			}).$mount();
+			const inputElement = vm.$el.querySelector("input");
+			expect(inputElement.disabled).to.equal(true);
+
+		});
+		it("接收 readonly", () => {
+			
+			vm = new Constructor({
+				propsData: {
+					readonly:true
+				}
+			}).$mount();
+			const inputElement = vm.$el.querySelector("input");
+			expect(inputElement.readOnly).to.equal(true);
+			
+		});
+		it("接收 error", () => {
+			
+			vm = new Constructor({
+				propsData: {
+					error:"用户名不合法"
+				}
+			}).$mount();
+			const useElement = vm.$el.querySelector("use");
+			expect(useElement.getAttribute("xlink:href")).to.equal("#icon-error");
+			const spanElement = vm.$el.querySelector(".errorMessage");
+			expect(spanElement.innerText).to.equal("用户名不合法");
+			
+		});
 	});
-	/* it("可以设置loading.", () => {
-		const Constructor = Vue.extend(Button);
-		const vm = new Constructor({
-			propsData: {
-				icon: "settings",
-				loading: true
-			}
-		}).$mount();
-		const useElements = vm.$el.querySelectorAll("use");
-		expect(useElements.length).to.equal(1);
-		expect(useElements[0].getAttribute("xlink:href")).to.equal("#i-loading");
-		vm.$destroy();
-	});
-	it("icon 默认的 order 是 1", () => {
+	describe("事件", () => {
+		const Constructor = Vue.extend(Input);
+		let vm;
+		afterEach(() => {
+			vm.$destroy();
+		});
+		it("支持change/focus/input/blur事件", () => {
+			[ "change", "input", "focus", "blur" ].forEach((eventName) => {
+				vm = new Constructor().$mount();
+				const callback = sinon.fake();
+				vm.$on(eventName, callback);
+				let event = new Event(eventName);
+				let inputElement = vm.$el.querySelector("input");
+				inputElement.dispatchEvent(event);
+				// eslint-disable-next-line no-unused-expressions
+				expect(callback).to.have.been.calledWith(event);
+			});
+			
+		});
+		/* it("支持change事件", () => {
+			vm = new Constructor().$mount();
+			const callback = sinon.fake();
+			vm.$on("change", callback);
+			let event = new Event("change");
+			let inputElement = vm.$el.querySelector("input");
+			inputElement.dispatchEvent(event);
+			// eslint-disable-next-line no-unused-expressions
+			expect(callback).to.have.been.calledWith(event);
+		});
+		it("支持 input 事件", () => {
+			vm = new Constructor().$mount();
+			const callback = sinon.fake();
+			vm.$on("input", callback);
+			let event = new Event("input");
+			let inputElement = vm.$el.querySelector("input");
+			inputElement.dispatchEvent(event);
+			// eslint-disable-next-line no-unused-expressions
+			expect(callback).to.have.been.calledWith(event);
+		});
+		it("支持 focus 事件", () => {
+			vm = new Constructor().$mount();
+			const callback = sinon.fake();
+			vm.$on("focus", callback);
+			let event = new Event("focus");
+			let inputElement = vm.$el.querySelector("input");
+			inputElement.dispatchEvent(event);
+			// eslint-disable-next-line no-unused-expressions
+			expect(callback).to.have.been.calledWith(event);
+		});
+		it("支持 blur 事件", () => {
+			vm = new Constructor().$mount();
+			const callback = sinon.fake();
+			vm.$on("blur", callback);
+			let event = new Event("blur");
+			let inputElement = vm.$el.querySelector("input");
+			inputElement.dispatchEvent(event);
+			// eslint-disable-next-line no-unused-expressions
+			expect(callback).to.have.been.calledWith(event);
+		});*/
+	}); 
+	/*it("icon 默认的 order 是 1", () => {
 		const div = document.createElement("div");
 		document.body.appendChild(div);
 		const Constructor = Vue.extend(Button);

@@ -9,6 +9,10 @@
       class="i-input"
       :disabled="disabled"
       :readonly="readonly"
+      @change="$emit('change',$event)"
+      @input="$emit('input',$event)"
+      @focus="$emit('focus',$event)"
+      @blur="$emit('blur',$event)"
     >
     <template v-if="error">
       <i-icon name="error" />
@@ -18,7 +22,11 @@
 </template>
 
 <script>
+import Icon from "./Icon.vue";
 export default {
+	components:{
+		"i-icon":Icon
+	},
 	props:{
 		value:{
 			type:String

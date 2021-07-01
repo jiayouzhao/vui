@@ -12,5 +12,10 @@ Vue.component("ButtonGroup", ButtonGroup);
 Vue.component("IInput", Input);
 
 new Vue({
-	el: "#app"
+	el: "#app",
+	methods:{
+		inputChange(e) {
+			console.log(e);
+		}
+	}
 });
