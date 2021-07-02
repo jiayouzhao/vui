@@ -16,39 +16,12 @@
 <body>
     <div id="app">
         <i-row gutter="20">
-            <i-col class="demobox" span="9">1</i-col>
-            <i-col class="demobox" span="15">
-                <i-row align="center">
-                    <i-col><div><span>1</span></div></i-col>
-                    <i-col><div><span>2</span></div></i-col>
-                    <i-col><div><span>3</span></div></i-col>
-                </i-row>
+            <i-col span="6" :sm="{span:'12'}" :md="{span:4}"><div class="demobox">1</div></i-col>
+            <i-col span="18" :sm="{span:'12'}" :md="{span:20}"><div class="demobox">2</div>
             </i-col>
         </i-row>
-        <i-row gutter="20">
-            <i-col>1</i-col>
-            <i-col>2</i-col>
-            <i-col>3</i-col>
-        </i-row>
-        <i-row>
-            <i-col>1</i-col>
-            <i-col>2</i-col>
-            <i-col>3</i-col>
-        </i-row>
-        <i-row>
-            <i-col>1</i-col>
-            <i-col>2</i-col>
-            <i-col>3</i-col>
-            <i-col>4</i-col>
-        </i-row>
-        <i-row>
-            <i-col span="2">1</i-col>
-            <i-col span="22">2</i-col>
-        </i-row>
-        <i-row>
-            <i-col span="2">1</i-col>
-            <i-col span="20" offset="2">2</i-col>
-        </i-row>
+        
+        
         <i-input disabled v-model="message"></i-input>
         <i-input value="李四" readonly="readonly"></i-input>
         <i-input></i-input>

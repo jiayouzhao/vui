@@ -41,6 +41,7 @@ export default {
 .row{
 
     display:flex;
+    flex-wrap:warp;
     &.row-left{
         justify-content: flex-start;
     }
