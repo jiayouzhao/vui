@@ -8,12 +8,22 @@
         content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,viewport-fit=cover">
     <title></title>
 </head>
-
+<style>
+.demobox{
+    border:1px solid red;
+}
+</style>
 <body>
     <div id="app">
         <i-row gutter="20">
-            <i-col>1</i-col>
-            <i-col>2</i-col>
+            <i-col class="demobox" span="9">1</i-col>
+            <i-col class="demobox" span="15">
+                <i-row align="center">
+                    <i-col><div><span>1</span></div></i-col>
+                    <i-col><div><span>2</span></div></i-col>
+                    <i-col><div><span>3</span></div></i-col>
+                </i-row>
+            </i-col>
         </i-row>
         <i-row gutter="20">
             <i-col>1</i-col>

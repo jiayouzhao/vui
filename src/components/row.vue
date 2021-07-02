@@ -2,6 +2,7 @@
   <div
     class="row"
     :style="rowStyle"
+    :class="rowAlign"
   >
     <slot />
   </div>
@@ -12,11 +13,20 @@ export default {
 	props:{
 		gutter:{
 			type:[ Number, String ]
+		},
+		align:{
+			type:String,
+			validator(value) {
+				return [ "left", "right", "center" ].includes(value);
+			}
 		}
 	},
 	computed:{
 		rowStyle() {
 			return { marginLeft:`-${this.gutter / 2}px`, marginRight:`-${this.gutter / 2}px` };
+		},
+		rowAlign() {
+			return { [`row-${this.align}`]:this.align };
 		}
 	},
 	mounted() {
@@ -29,6 +39,16 @@ export default {
 
 <style lang="scss" scoped>
 .row{
+
     display:flex;
+    &.row-left{
+        justify-content: flex-start;
+    }
+    &.row-right{
+        justify-content:flex-end;
+    }
+    &.row-center{
+        justify-content: center;
+    }
 }
 </style>
