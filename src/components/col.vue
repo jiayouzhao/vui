@@ -31,6 +31,7 @@ let validator = (value) => {
 };
 
 export default {
+	name:"Col",
 	props:{
 		span:[ Number, String ],
 		offset:{
