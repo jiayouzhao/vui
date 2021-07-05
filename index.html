@@ -11,30 +11,19 @@
 <style>
 .demobox{
     border:1px solid red;
+    height:50px;
 }
 </style>
 <body>
     <div id="app">
-        <i-row gutter="20" align="right">
-            <i-col span="6" :sm="{span:'12'}" :md="{span:4}"><div class="demobox">1</div></i-col>
-            <i-col span="18" :sm="{span:'12'}" :md="{span:20}"><div class="demobox">2</div>
-            </i-col>
-        </i-row>
-        
-        
-        <i-input disabled v-model="message"></i-input>
-        <i-input value="李四" readonly="readonly"></i-input>
-        <i-input></i-input>
-        <i-input value="赵" error="用户名不合法"></i-input>
-        <g-button icon="loading">按钮</g-button>
-        <g-button>按钮</g-button>
-        <g-button icon="setting" icon-position="right">按钮</g-button>
-        <i-icon name="download"></i-icon>
-        <i-icon name="loading"></i-icon>
-        <button-group>
-            <g-button icon="left">按钮</g-button>
-            <g-button icon="right" icon-position="right">按钮</g-button>
-        </button-group>
+        <i-layout style="height:100vh">
+            <i-sider>sider</i-sider>
+            <i-layout>
+                <i-header class="demobox">header</i-header>
+                <i-content class="demobox">content</i-content>
+                <i-footer class="demobox">footer</i-footer>
+            </i-layout>
+        </i-layout>
     </div>
     <script src="./src/index.js"></script>
     <script src="//at.alicdn.com/t/font_2636303_m64wvip2ra.js"></script>
