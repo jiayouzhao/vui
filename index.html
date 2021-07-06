@@ -17,7 +17,11 @@
 <body>
     <div id="app">
         <i-layout style="height:100vh">
-            <i-sider><button @click="showMessage">展示信息</button></i-sider>
+            <i-sider>
+                <button @click="showMessage1">top</button>
+                <button @click="showMessage2">middle</button>
+                <button @click="showMessage3">bottom</button>
+            </i-sider>
             <i-layout>
                 <i-header class="demobox">header</i-header>
                 <i-content class="demobox">content</i-content>

@@ -12,7 +12,6 @@ import Header from "./components/layout/header.vue";
 import Content from "./components/layout/content.vue";
 import Footer from "./components/layout/footer.vue";
 import Sider from "./components/layout/sider.vue";
-import Message from "./components/message.vue";
 import Toast from "./components/plugin/Toast.js";
 
 Vue.component("GButton", Button);
@@ -37,8 +36,27 @@ new Vue({
 		
 	},
 	methods:{
-		showMessage() {
-			this.$message("我是 Message");
+		showMessage1() {
+			this.showMessage({ position:"top" });
+		},
+		showMessage2() {
+			this.showMessage({ position:"middle" });
+		},
+		showMessage3() {
+			this.showMessage({ position:"bottom" });
+		},
+		showMessage({ position }) {
+			this.$message("我爱中国", {
+				position,
+				closeButton:{
+					text:"求走嘛带",
+					callback() {
+						console.log("我知道了");
+					}
+			    },
+				autoClose:false,
+				autoCloseDelay:1
+			});
 		}
 	}
 });
