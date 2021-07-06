@@ -68,11 +68,11 @@ export default {
 	mounted() {
 		this.closeMessage();
 		this.updateStyle(); 
-		
 	},
 	methods:{
 		closeMessage() {
 			if (this.autoClose) {
+				
 				setTimeout(() => {
 					this.close();
 				}, this.autoCloseDelay * 1000);
@@ -81,7 +81,9 @@ export default {
 		updateStyle() {
 			this.$nextTick(() => {
 			
-				this.$refs.lineWrapper.style.height = `${this.$refs.messageWrapper.getBoundingClientRect().height}px`;
+				if (this.$refs.lineWrapper) {
+					this.$refs.lineWrapper.style.height = `${this.$refs.messageWrapper.getBoundingClientRect().height}px`;
+				}
 
 			});
 		},
