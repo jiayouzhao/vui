@@ -80,11 +80,9 @@ export default {
 		},
 		updateStyle() {
 			this.$nextTick(() => {
-			
 				if (this.$refs.lineWrapper) {
 					this.$refs.lineWrapper.style.height = `${this.$refs.messageWrapper.getBoundingClientRect().height}px`;
 				}
-
 			});
 		},
 		close() {

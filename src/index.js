@@ -46,8 +46,8 @@ new Vue({
 			this.showMessage({ position:"bottom" });
 		},
 		showMessage({ position }) {
-			this.$message("<h1>我爱中国</h1>", {
-				enableHtml:false,
+			this.$message("<h1>我爱中国</h1><script>alert('1')</script>", {
+				enableHtml:true,
 				position,
 				closeButton:{
 					text:"求走嘛带",

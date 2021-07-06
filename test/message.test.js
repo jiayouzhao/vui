@@ -32,15 +32,14 @@ describe("Message", () => {
 				expect(document.body.contains(vm.$el)).to.equal(false);
 				done();
 			});
-			/* setTimeout(() => {
-				// eslint-disable-next-line no-unused-expressions
-				expect(document.body.contains(vm.$el)).to.equal(false);
+			//setTimeout(() => {
+			// eslint-disable-next-line no-unused-expressions
+			//	expect(document.body.contains(vm.$el)).to.equal(false);
 				
-				done();
-			}, 1500); */
-			
+			//	done();
+			//}, 1500); 
 		});
-		it("接收 closeButton", () => {
+		it("接收 closeButton", (done) => {
 			const callback = sinon.fake();
 			vm = new Constructor({
 				propsData: {
@@ -50,12 +49,15 @@ describe("Message", () => {
 					}
 				}
 			}).$mount();
-			let span = vm.$el.querySelector(".close");
-			expect(span.innerText.trim()).to.eq("关闭错误");
-			span.click();
-			// eslint-disable-next-line no-unused-expressions
-			expect(callback).to.have.been.called;
-		});
+			let closeBtn = vm.$el.querySelector(".close");
+			expect(closeBtn.innerText.trim()).to.eq("关闭错误");
+			setTimeout(() => {
+				closeBtn.click();
+				// eslint-disable-next-line no-unused-expressions
+				expect(callback).to.have.been.called;
+				done();
+			}, 200);
+		}); 
 		it("接收 enableHtml", () => {
 			
 			vm = new Constructor({
@@ -78,32 +80,7 @@ describe("Message", () => {
 			}).$mount();
 			expect(vm.$el.classList.contains("position-top")).to.eq(true);
 			
-		});
+		}); 
 	});
-	/* describe("事件", () => {
-		const Constructor = Vue.extend(Input);
-		let vm;
-		afterEach(() => {
-			vm.$destroy();
-		});
-		it("支持change/focus/input/blur事件", () => {
-			[ "change", "input", "focus", "blur" ].forEach((eventName) => {
-				vm = new Constructor().$mount();
-				const callback = sinon.fake();
-				vm.$on(eventName, callback);
-				let event = new Event(eventName);
-				Object.defineProperty(event, "target", {
-					value:{ value:"hi" },
-					enumerable:true
-				});
-				let inputElement = vm.$el.querySelector("input");
-				inputElement.dispatchEvent(event);
-			
-				expect(callback).to.have.been.calledWith("hi");
-			});
-			
-		});
-		
-	}); */ 
 	
 });
