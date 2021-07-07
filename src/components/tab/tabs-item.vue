@@ -1,7 +1,7 @@
 <template>
   <div
     class="tabs-item"
-    :class="{active}"
+    :class="{active,disabled}"
     @click="onClick"
   >
     <slot />
@@ -13,7 +13,10 @@ export default {
 	name:"VuiTabsItem",
 	inject:[ "EventBus" ],
 	props:{
-		name:String
+		name:String,
+		disabled:{
+			type:Boolean
+		}
 	},
 	data() {
 		return {
@@ -22,13 +25,16 @@ export default {
 	},
 	mounted() {
 		this.EventBus.$on("update:selected", (name) => {
-		
 			this.active = name === this.name;
 		});
+		
 	},
 	methods:{
 		onClick() {
 			//console.log(this.name);
+			if (this.disabled === true) {
+				return; 
+			}
 			this.EventBus.$emit("update:selected", this.name, this);
 		}
 	}
@@ -42,6 +48,10 @@ export default {
     padding:0.5em 1em;
     &.active{
         color:#5496E4;
+    }
+    &.disabled{
+        color:rgb(221, 221, 221);
+        cursor:not-allowed;
     }
 }
 </style>
