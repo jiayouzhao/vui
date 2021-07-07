@@ -1,8 +1,7 @@
-const expert = chai.expect;
+const expect = chai.expect;
 import Vue from "vue";
 import Row from "../src/components/row.vue";
 import Col from "../src/components/col.vue"; 
-import _ from "lodash";
 
 Vue.config.productionTip = false;
 Vue.config.devtools = false;

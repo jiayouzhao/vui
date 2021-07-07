@@ -2,6 +2,7 @@
   <div
     class="tabs-item"
     :class="{active,disabled}"
+    :data-name="name"
     @click="onClick"
   >
     <slot />
@@ -24,9 +25,11 @@ export default {
 		};
 	},
 	mounted() {
-		this.EventBus.$on("update:selected", (name) => {
-			this.active = name === this.name;
-		});
+		if (this.EventBus) {
+			this.EventBus.$on("update:selected", (name) => {
+				this.active = name === this.name;
+			});
+		}
 		
 	},
 	methods:{
@@ -35,7 +38,11 @@ export default {
 			if (this.disabled === true) {
 				return; 
 			}
-			this.EventBus.$emit("update:selected", this.name, this);
+			if (this.EventBus) {
+				this.EventBus.$emit("update:selected", this.name, this);
+			}
+			//测试
+			this.$emit("click");
 		}
 	}
 };

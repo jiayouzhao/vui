@@ -23,17 +23,20 @@ export default {
 		this.EventBus.$on("update:selected", (name, vm) => {
 			const { left, width, height, top } = vm.$el.getBoundingClientRect(); 
 			
-			if (this.direction === "horizontal") {
-				this.$refs.line.style.width = `${width}px`;
-				this.$refs.line.style.transform = `translateX(${left}px)`;
-			} else if (this.direction === "upright") {
-				this.$refs.line.style.height = `${height}px`;
-				this.$refs.line.style.transform = `translateY(${top}px)`;
-			}   
+			if (this.$refs.line) {
+            
+				if (this.direction === "horizontal") {
+					this.$refs.line.style.width = `${width}px`;
+					this.$refs.line.style.transform = `translateX(${left}px)`;
+				} else if (this.direction === "upright") {
+					this.$refs.line.style.height = `${height}px`;
+					this.$refs.line.style.transform = `translateY(${top}px)`;
+				}   
 			
-			setTimeout(() => {
-				this.$refs.line.style.transition = `all .3s`;
-			});
+				setTimeout(() => {
+					this.$refs.line.style.transition = `all .3s`;
+				});
+			}
 		});
 	}
 	

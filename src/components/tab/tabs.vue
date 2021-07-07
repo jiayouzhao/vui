@@ -33,9 +33,6 @@ export default {
 			EventBus:new Vue()
 		};
 	},
-	created() {
-		
-	},
 	mounted() {
 		this.$children.forEach(vm => {
 			if (vm.$options.name === "VuiTabsHead") {
@@ -46,10 +43,6 @@ export default {
 					}
 				});
 			}
-		});
-
-		this.EventBus.$on("update:selected", (name) => {
-			//console.log("tabs", name);
 		});
 	}
 };
