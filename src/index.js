@@ -13,6 +13,11 @@ import Content from "./components/layout/content.vue";
 import Footer from "./components/layout/footer.vue";
 import Sider from "./components/layout/sider.vue";
 import Toast from "./components/plugin/Toast.js";
+import Tabs from "./components/tab/tabs.vue";
+import TabsHead from "./components/tab/tabs-head.vue";
+import TabsItem from "./components/tab/tabs-item.vue";
+import TabsBody from "./components/tab/tabs-body.vue";
+import TabsContent from "./components/tab/tabs-content.vue";
 
 Vue.component("GButton", Button);
 Vue.component("IIcon", Icon);
@@ -25,12 +30,18 @@ Vue.component("IHeader", Header);
 Vue.component("IContent", Content);
 Vue.component("IFooter", Footer);
 Vue.component("ISider", Sider);
+Vue.component("ITabs", Tabs);
+Vue.component("ITabsHead", TabsHead);
+Vue.component("ITabsItem", TabsItem);
+Vue.component("ITabsBody", TabsBody);
+Vue.component("ITabsContent", TabsContent);
 Vue.use(Toast);
 
 new Vue({
 	el: "#app",
 	data:{
-		message:"hi"
+		message:"hi",
+		selectedType:"money"
 	},
 	created() {
 		

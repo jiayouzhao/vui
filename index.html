@@ -16,18 +16,21 @@
 </style>
 <body>
     <div id="app">
-        <i-layout style="height:100vh">
-            <i-sider>
-                <button @click="showMessage1">top</button>
-                <button @click="showMessage2">middle</button>
-                <button @click="showMessage3">bottom</button>
-            </i-sider>
-            <i-layout>
-                <i-header class="demobox">header</i-header>
-                <i-content class="demobox">content</i-content>
-                <i-footer class="demobox">footer</i-footer>
-            </i-layout>
-        </i-layout>
+        <i-tabs :selected.sync="selectedType" direction="horizontal">
+            <i-tabs-head>
+                <i-tabs-item name="money">财经</i-tabs-item>
+                <i-tabs-item name="car">汽车</i-tabs-item>
+                <i-tabs-item name="school">学校</i-tabs-item>
+                <template slot="otherItem">
+                    <button>设置</button>
+                </template>
+            </i-tabs-head>
+            <i-tabs-body>
+                <i-tabs-content name="money">财经资讯</i-tabs-content>
+                <i-tabs-content name="car">汽车资讯</i-tabs-content>
+                <i-tabs-content name="school">学校资讯</i-tabs-content>
+            </i-tabs-body>
+        </i-tabs>
     </div>
     <script src="./src/index.js"></script>
     <script src="//at.alicdn.com/t/font_2636303_m64wvip2ra.js"></script>
