@@ -15,22 +15,22 @@
 }
 </style>
 <body>
-    <div id="app">
-        <i-tabs :selected.sync="selectedType" direction="horizontal">
-            <i-tabs-head>
-                <i-tabs-item name="money">财经</i-tabs-item>
-                <i-tabs-item name="car">汽车</i-tabs-item>
-                <i-tabs-item name="school">学校</i-tabs-item>
-                <template slot="otherItem">
-                    <button>设置</button>
-                </template>
-            </i-tabs-head>
-            <i-tabs-body>
-                <i-tabs-content name="money">财经资讯</i-tabs-content>
-                <i-tabs-content name="car">汽车资讯</i-tabs-content>
-                <i-tabs-content name="school">学校资讯</i-tabs-content>
-            </i-tabs-body>
-        </i-tabs>
+    <div id="app" style="margin:50px;">
+    <div style="border:1px solid red">
+        <i-popover>
+            <template slot="popContent">
+                <div>我是内容</div>
+            </template>
+            <button>点击</button>
+        </i-popover>
+        <i-popover>
+            <template slot="popContent">
+                <div>陈雅婷身材好</div>
+            </template>
+            <button>点击</button>
+        </i-popover>
+    </div>
+        
     </div>
     <script src="./src/index.js"></script>
     <script src="//at.alicdn.com/t/font_2636303_m64wvip2ra.js"></script>

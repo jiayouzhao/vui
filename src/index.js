@@ -18,6 +18,7 @@ import TabsHead from "./components/tab/tabs-head.vue";
 import TabsItem from "./components/tab/tabs-item.vue";
 import TabsBody from "./components/tab/tabs-body.vue";
 import TabsContent from "./components/tab/tabs-content.vue";
+import Popover from "./components/popover.vue";
 
 Vue.component("GButton", Button);
 Vue.component("IIcon", Icon);
@@ -35,6 +36,7 @@ Vue.component("ITabsHead", TabsHead);
 Vue.component("ITabsItem", TabsItem);
 Vue.component("ITabsBody", TabsBody);
 Vue.component("ITabsContent", TabsContent);
+Vue.component("IPopover", Popover);
 Vue.use(Toast);
 
 new Vue({
