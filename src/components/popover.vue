@@ -53,22 +53,26 @@ export default {
 			const { top, left, width, height } = this.$refs.content.getBoundingClientRect();
 			document.body.appendChild(this.$refs.popoverContent);
 			const { height:height2 } = this.$refs.popoverContent.getBoundingClientRect();
-			if (this.position === "top") {
-				this.$refs.popoverContent.style.left = `${left + window.scrollX}px`;
-				this.$refs.popoverContent.style.top = `${top + window.scrollY}px`;
-			} else if (this.position === "left") {
-				this.$refs.popoverContent.style.left = `${left + window.scrollX}px`;
-			
-				this.$refs.popoverContent.style.top = `${top + (height - height2) / 2 + window.scrollY}px`;
-			
-			} else if (this.position === "right") {
-				this.$refs.popoverContent.style.left = `${left + width + window.scrollX}px`;
-				this.$refs.popoverContent.style.top = `${top + height2 + (height - height2) / 2 + window.scrollY}px`;
-			} else if (this.position === "bottom") {
-				this.$refs.popoverContent.style.left = `${left + window.scrollX}px`;
-				this.$refs.popoverContent.style.top = `${top + height2 + height + window.scrollY}px`;
-    
-			}
+			const positions = {
+				"top":{
+					left:left + window.scrollX,
+					top:top + window.scrollY
+				},
+				"left":{
+					left:left + window.scrollX,
+					top:top + (height - height2) / 2 + window.scrollY
+				},
+				"right":{
+					left:left + width + window.scrollX,
+					top:top + height2 + (height - height2) / 2 + window.scrollY
+				},
+				"bottom":{
+					left:left + window.scrollX,
+					top:top + height2 + height + window.scrollY
+				}
+			};
+			this.$refs.popoverContent.style.left = positions[this.position].left + "px";
+			this.$refs.popoverContent.style.top = positions[this.position].top + "px";
 			
 		},
 		close() {
