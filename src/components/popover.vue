@@ -53,17 +53,20 @@ export default {
 		} else if (this.trigger === "hover") {
 			this.$refs.popover.addEventListener("mouseenter", this.popClick);
 			this.$refs.popover.addEventListener("mouseleave", this.close); 
+            
 		}
 		
 	},
 	destroyed() {
-		if (this.trigger === "click") {
-			this.$refs.popover.removeEventListener(this.trigger, this.popClick);
-		} else {
-			this.$refs.popover.removeEventListener("mouseenter", this.popClick);
-			this.$refs.popover.removeEventListener("mouseleave", this.close);
-		}
+		if (this.$refs.popover) {
         
+			if (this.trigger === "click") {
+				this.$refs.popover.removeEventListener(this.trigger, this.popClick);
+			} else {
+				this.$refs.popover.removeEventListener("mouseenter", this.popClick);
+				this.$refs.popover.removeEventListener("mouseleave", this.close);
+			}
+		}
 	},
 	methods:{
 		documentClick(e) {
