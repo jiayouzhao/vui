@@ -7,6 +7,7 @@
       v-if="toggle"
       ref="popoverContent"
       class="popoverWrapper"
+      :class="{[`position-${position}`]:position}"
     >
       <slot
         name="popContent"
@@ -24,12 +25,20 @@
 
 <script>
 export default {
+	props:{
+		position:{
+			type:String,
+			default:"top",
+			validator(value) {
+				return [ "left", "right", "top", "bottom" ].indexOf(value) >= 0;
+			}
+		}
+	},
 	data() {
 		return {
 			toggle:false
 		};
 	},
-
 	methods:{
 		documentClick(e) {
 	
@@ -40,16 +49,33 @@ export default {
 			}
 		},
 		popoverPosition() {
-			let { top, left, width } = this.$refs.content.getBoundingClientRect();
-			this.$refs.popoverContent.style.left = `${left + window.scrollX}px`;
-			this.$refs.popoverContent.style.top = `${top + window.scrollY}px`;
+			
+			const { top, left, width, height } = this.$refs.content.getBoundingClientRect();
 			document.body.appendChild(this.$refs.popoverContent);
+			const { height:height2 } = this.$refs.popoverContent.getBoundingClientRect();
+			if (this.position === "top") {
+				this.$refs.popoverContent.style.left = `${left + window.scrollX}px`;
+				this.$refs.popoverContent.style.top = `${top + window.scrollY}px`;
+			} else if (this.position === "left") {
+				this.$refs.popoverContent.style.left = `${left + window.scrollX}px`;
+			
+				this.$refs.popoverContent.style.top = `${top + (height - height2) / 2 + window.scrollY}px`;
+			
+			} else if (this.position === "right") {
+				this.$refs.popoverContent.style.left = `${left + width + window.scrollX}px`;
+				this.$refs.popoverContent.style.top = `${top + height2 + (height - height2) / 2 + window.scrollY}px`;
+			} else if (this.position === "bottom") {
+				this.$refs.popoverContent.style.left = `${left + window.scrollX}px`;
+				this.$refs.popoverContent.style.top = `${top + height2 + height + window.scrollY}px`;
+    
+			}
+			
 		},
 		close() {
 			this.toggle = false;
 			document.removeEventListener("click", this.documentClick);
 		},
-		popClick(e) {
+		popClick() {
 			
 			if (this.toggle === false) {
 				this.toggle = true;
@@ -75,9 +101,81 @@ export default {
     vertical-align:top;
 }
 .popoverWrapper{
-    border:1px solid red;
+    border:1px solid #333;
+    border-radius:4px;
     position:absolute;
-    transform:translate(-25%,-100%);
-    width:5em;
+    transform:translateY(-100%);
+    padding:0.5em 0.8em;
+    max-width:6em;
+    word-break:break-all;
+    background:#fff;
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,.5));
+    &::before,&::after{
+        content:'';
+        display:block;
+        height:0px;
+        width:0px;
+        border:10px solid transparent;
+        
+        position:absolute;
+    }
+    &.position-top{
+        margin-top:-10px;
+        &::before{
+            border-top-color: #333;
+            left:10px;
+            top:100%;
+        }
+        &::after{
+            border-top-color:#fff;
+            left:10px;
+            top:calc(100% - 1px);
+        }
+    }
+    &.position-left{
+        margin-left:-10px;
+        transform:translateX(-100%);
+        &::before,&::after{
+            top:50%;
+            transform:translatey(-50%);
+        }
+        &::before{
+            border-left-color: #333;
+            left:100%;
+        }
+        &::after{
+            border-left-color:#fff;
+            left:calc(100% - 1px);
+        }
+    }
+    &.position-right{
+        margin-left:10px;
+        &::before,&::after{
+            top:50%;
+            transform:translatey(-50%);
+        }
+        &::before{
+            border-right-color: #333;
+            right:100%;
+        }
+        &::after{
+            border-right-color:#fff;
+            right:calc(100% - 1px);
+        }
+    }
+    &.position-bottom{
+        margin-top:10px;
+        &::before,&::after{
+            left:10px;
+            bottom:100%;
+        }
+        &::before{
+            border-bottom-color: #333;
+        }
+        &::after{
+            border-bottom-color:#fff;
+            bottom:calc(100% - 1px);
+        }
+    }
 }
 </style>

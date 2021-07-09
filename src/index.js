@@ -20,7 +20,7 @@ import TabsBody from "./components/tab/tabs-body.vue";
 import TabsContent from "./components/tab/tabs-content.vue";
 import Popover from "./components/popover.vue";
 
-Vue.component("GButton", Button);
+Vue.component("IButton", Button);
 Vue.component("IIcon", Icon);
 Vue.component("ButtonGroup", ButtonGroup);
 Vue.component("IInput", Input);
