@@ -1,7 +1,7 @@
 <template>
   <div
+    ref="popover"
     class="popover"
-    @click="popClick"
   >
     <div
       v-if="toggle"
@@ -32,6 +32,13 @@ export default {
 			validator(value) {
 				return [ "left", "right", "top", "bottom" ].indexOf(value) >= 0;
 			}
+		},
+		trigger:{
+			type:String,
+			default:"click",
+			validator(value) {
+				return [ "click", "hover" ].indexOf(value) >= 0;
+			}
 		}
 	},
 	data() {
@@ -39,9 +46,28 @@ export default {
 			toggle:false
 		};
 	},
+	mounted() {
+		//@click="popClick"
+		if (this.trigger === "click") {
+			this.$refs.popover.addEventListener(this.trigger, this.popClick);
+		} else if (this.trigger === "hover") {
+			this.$refs.popover.addEventListener("mouseenter", this.popClick);
+			this.$refs.popover.addEventListener("mouseleave", this.close); 
+		}
+		
+	},
+	destroyed() {
+		if (this.trigger === "click") {
+			this.$refs.popover.removeEventListener(this.trigger, this.popClick);
+		} else {
+			this.$refs.popover.removeEventListener("mouseenter", this.popClick);
+			this.$refs.popover.removeEventListener("mouseleave", this.close);
+		}
+        
+	},
 	methods:{
 		documentClick(e) {
-	
+			
 			if (this.$refs.popoverContent.contains(e.target) || this.$refs.content.contains(e.target)) {
 				return; 
 			} else {
@@ -120,19 +146,20 @@ export default {
         height:0px;
         width:0px;
         border:10px solid transparent;
-        
         position:absolute;
     }
     &.position-top{
         margin-top:-10px;
+        &::before,&::after{
+            left:10px;
+            border-bottom:none;
+        }
         &::before{
             border-top-color: #333;
-            left:10px;
             top:100%;
         }
         &::after{
             border-top-color:#fff;
-            left:10px;
             top:calc(100% - 1px);
         }
     }
@@ -142,6 +169,7 @@ export default {
         &::before,&::after{
             top:50%;
             transform:translatey(-50%);
+            border-right:none;
         }
         &::before{
             border-left-color: #333;
@@ -157,6 +185,7 @@ export default {
         &::before,&::after{
             top:50%;
             transform:translatey(-50%);
+            border-left:none;
         }
         &::before{
             border-right-color: #333;
@@ -172,6 +201,7 @@ export default {
         &::before,&::after{
             left:10px;
             bottom:100%;
+            border-top:none;
         }
         &::before{
             border-bottom-color: #333;
