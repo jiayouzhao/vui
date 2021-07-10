@@ -29,18 +29,29 @@ export default {
 	mounted() {
 		this.eventBus.$emit("update:selected", this.selected);
 		this.eventBus.$on("addSelected", (name) => {
-			let selectedCopy = JSON.parse(JSON.stringify(this.selected));
-
-			if (this.single) {
-				selectedCopy = [ name ];
-			} else {
-				selectedCopy.push(name);
-			}
-			this.$emit("update:selected", selectedCopy);
-			this.eventBus.$emit("update:selected", selectedCopy);
+			this.addSelected(name);
 		});
 		this.eventBus.$on("removeSelected", (name) => {
-			let selectedCopy = JSON.parse(JSON.stringify(this.selected));
+			this.removeSelected(name);
+		});
+	},
+	methods:{
+		copyElement(element) {
+			return JSON.parse(JSON.stringify(element));
+		},
+		triggerUpdate(selectedCopy) {
+			this.$emit("update:selected", selectedCopy);
+			this.eventBus.$emit("update:selected", selectedCopy);
+		},
+		addSelected(name) {
+			let selectedCopy = this.copyElement(this.selected);
+
+			this.single ? selectedCopy = [ name ] : selectedCopy.push(name);
+			
+			this.triggerUpdate(selectedCopy);
+		},
+		removeSelected(name) {
+			let selectedCopy = this.copyElement(this.selected);
 			if (this.single) {
 				selectedCopy = [];
 			} else {
@@ -48,9 +59,8 @@ export default {
 				selectedCopy.splice(index, 1);
 			}
 			
-			this.$emit("update:selected", selectedCopy);
-			this.eventBus.$emit("update:selected", selectedCopy);
-		});
+			this.triggerUpdate(selectedCopy);
+		}
 	}
 };
 </script>
