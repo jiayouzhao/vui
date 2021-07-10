@@ -19,7 +19,11 @@ import TabsItem from "./components/tab/tabs-item.vue";
 import TabsBody from "./components/tab/tabs-body.vue";
 import TabsContent from "./components/tab/tabs-content.vue";
 import Popover from "./components/popover.vue";
+import Collapse from "./components/collapse/collapse.vue";
+import CollapseItem from "./components/collapse/collapseItem.vue";
 
+Vue.component("ICollapse", Collapse);
+Vue.component("ICollapseItem", CollapseItem);
 Vue.component("IButton", Button);
 Vue.component("IIcon", Icon);
 Vue.component("ButtonGroup", ButtonGroup);
@@ -43,7 +47,8 @@ new Vue({
 	el: "#app",
 	data:{
 		message:"hi",
-		selectedType:"money"
+		selectedType:"money",
+		selectedTab:[ "1", "2" ]
 	},
 	created() {
 		
