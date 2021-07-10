@@ -48,7 +48,7 @@ new Vue({
 	data:{
 		message:"hi",
 		selectedType:"money",
-		selectedTab:[ "1", "2" ]
+		selectedTab:[ "1" ]
 	},
 	created() {
 		
