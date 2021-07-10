@@ -14,7 +14,8 @@ export default {
 	},
 	props:{
 		selected:{
-			type:Array
+			type:Array,
+			required:true
 		},
 		single:{
 			type:Boolean,

@@ -34,7 +34,7 @@ export default {
 	},
 	methods:{
 		onClick() {
-			//console.log(this.name);
+		
 			if (this.disabled === true) {
 				return; 
 			}

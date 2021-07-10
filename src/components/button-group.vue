@@ -8,7 +8,7 @@
 export default {
 	mounted() {
 		//如果按钮组额外添加div提示错误。
-		//console.log(this.$el);
+		
 	}
 };
 </script>

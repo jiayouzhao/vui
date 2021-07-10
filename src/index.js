@@ -64,13 +64,13 @@ new Vue({
 			this.showMessage({ position:"bottom" });
 		},
 		showMessage({ position }) {
-			this.$message("<h1>我爱中国</h1><script>alert('1')</script>", {
+			this.$message("<h1>我爱中国</h1>", {
 				enableHtml:true,
 				position,
 				closeButton:{
-					text:"求走嘛带",
+					text:"关闭",
 					callback() {
-						console.log("我知道了");
+						console.log("关闭回调");
 					}
 			    },
 				autoClose:false,
