@@ -8,7 +8,10 @@
 </template>
 
 <script>
+import "../../lib/svg.js";
+
 export default {
+	name:"VuiIcon",
 	props:[ "name" ],
 	created() {
 		

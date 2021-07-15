@@ -31,7 +31,7 @@ export default {
 				return value === "" || value === "right";
 			}
 		} 
-	},
+	}
 };
 </script> 
 
@@ -40,23 +40,34 @@ export default {
     width: 1em;
     height: 1em;
 }
-
+$font-size:14px;
+$button-height:32px;
+$button-bg:white;
+$border-color:#999;
+$border-radius:4px;
+$border-color-hover:#666;
+$button-active-bg:#eee;
 .i-button {
-    font-size: var(--font-size);
-    height: var(--button-height);
-    background: var(--button-bg);
-    color: var(--border-color);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 0px 1em;
-    display:flex;
+    font-size: $font-size;
+    height: $button-height;
+    background: $button-bg;
+    color: $border-color;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    padding: 0px 0.5em;
+    display:inline-flex;
+    vertical-align:middle;
+    align-items:center;
+    
+    display:inline-flex;
     justify-content: center;
     align-items:center;
+   
     &:hover {
-        border-color: var(--border-color-hover);
+        border-color: $border-color-hover;
     }
     &:active {
-        background-color: var(--button-active-bg);
+        background-color: $button-active-bg;
     }
     .icon{
         order:1;
@@ -64,8 +75,12 @@ export default {
 
     }
     .slotWrapper{
-        line-height:var(--font-size);
+        line-height:$font-size;
         order:2;
+        margin-left:0.2em;
+        &:first-child{
+            margin-left:0px;
+        }
     }
     &.icon-right{
         .icon{
