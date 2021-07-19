@@ -33,6 +33,8 @@
         "@vue/component-compiler-utils": "^2.0.0",
         "chai": "^4.1.2",
         "chai-spies": "^1.0.0",
+        "eslint": "^7.31.0",
+        "eslint-plugin-vue": "^7.14.0",
         "karma": "^2.0.4",
         "karma-chai": "^0.1.0",
         "karma-chai-spies": "^0.1.4",

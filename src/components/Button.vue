@@ -58,7 +58,7 @@ $button-active-bg:#eee;
     display:inline-flex;
     vertical-align:middle;
     align-items:center;
-    
+    cursor:pointer;
     display:inline-flex;
     justify-content: center;
     align-items:center;
@@ -72,7 +72,6 @@ $button-active-bg:#eee;
     .icon{
         order:1;
         margin-right:0.1em;
-
     }
     .slotWrapper{
         line-height:$font-size;
@@ -90,6 +89,8 @@ $button-active-bg:#eee;
         }
         .slotWrapper{
             order:1;
+            margin-left:0px;
+            margin-right:0.2em;
         }
     }
 

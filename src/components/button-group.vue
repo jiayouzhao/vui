@@ -14,18 +14,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$border-radius:4px;
 .i-button-group{
-    display:flex;
+    display:inline-flex;
     .i-button{
         border-radius:0px;
         &:first-child{
-            border-top-left-radius:var(--border-radius);
-            border-bottom-left-radius: var(--border-radius);
+            border-top-left-radius:$border-radius;
+            border-bottom-left-radius: $border-radius;
             margin-right:-1px;
         }
         &:last-child{
-            border-top-right-radius: var(--border-radius);
-            border-bottom-right-radius: var(--border-radius);
+            border-top-right-radius: $border-radius;
+            border-bottom-right-radius: $border-radius;
+            margin-left:-1px;
         }
         &:hover{
             position:realtive;
